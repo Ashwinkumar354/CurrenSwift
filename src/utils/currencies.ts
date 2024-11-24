@@ -160,4 +160,4 @@ export const currencies = [
   { code: 'ZAR', name: 'South African Rand', symbol: 'R' },
   { code: 'ZMW', name: 'Zambian Kwacha', symbol: 'ZK' },
   { code: 'ZWL', name: 'Zimbabwean Dollar', symbol: 'Z$' }
-].sort((a, b) => a.name.localeCompare(b.name));
+].sort((a, b) => a.code.localeCompare(b.code));
