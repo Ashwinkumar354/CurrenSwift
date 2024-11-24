@@ -56,6 +56,26 @@ function App() {
     }
   };
 
+  const formatAmount = (amount: number, currency: Currency) => {
+    const formattedNumber = amount.toLocaleString();
+    return currency.direction === 'rtl' 
+      ? `${currency.symbol} ${formattedNumber}`  // For RTL: symbol first, will be displayed RTL
+      : `${currency.symbol} ${formattedNumber}`; // For LTR: symbol first
+  };
+
+  const formatConversionResult = (fromAmount: number, fromCurrency: Currency, toAmount: number, toCurrency: Currency) => {
+    const fromFormatted = formatAmount(fromAmount, fromCurrency);
+    const toFormatted = formatAmount(toAmount, toCurrency);
+    
+    return (
+      <div className="flex items-center justify-center gap-2 text-2xl">
+        <span style={{ direction: fromCurrency.direction }}>{fromFormatted}</span>
+        <span>=</span>
+        <span style={{ direction: toCurrency.direction }}>{toFormatted}</span>
+      </div>
+    );
+  };
+
   return (
     <div className="min-h-screen bg-gradient-to-br from-indigo-500 via-purple-500 to-pink-500 py-12 px-4 sm:px-6 lg:px-8">
       <div className="max-w-3xl mx-auto">
@@ -114,7 +134,7 @@ function App() {
               <div className="mt-8 p-6 bg-gradient-to-r from-indigo-50 to-pink-50 dark:from-gray-700/50 dark:to-gray-700/50 rounded-xl">
                 <div className="text-center">
                   <div className="text-2xl font-bold text-gray-900 dark:text-gray-100">
-                    {result.fromCurrency.symbol}{result.fromAmount.toLocaleString()} = {result.toCurrency.symbol}{result.toAmount.toLocaleString()}
+                    {formatConversionResult(result.fromAmount, result.fromCurrency, result.toAmount, result.toCurrency)}
                   </div>
                   <div className="text-sm text-gray-500 dark:text-gray-400 mt-2">
                     1 {result.fromCurrency.code} = {result.rate} {result.toCurrency.code}

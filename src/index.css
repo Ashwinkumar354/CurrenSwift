@@ -35,4 +35,13 @@
       scrollbar-color: theme('colors.gray.600') transparent;
     }
   }
+
+  [dir="rtl"] {
+    unicode-bidi: bidi-override;
+  }
+
+  .rtl-text {
+    direction: rtl;
+    unicode-bidi: bidi-override;
+  }
 }

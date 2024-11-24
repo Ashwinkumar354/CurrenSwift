@@ -2,6 +2,7 @@ export interface Currency {
   code: string;
   name: string;
   symbol: string;
+  direction: 'ltr' | 'rtl';
 }
 
 export interface ConversionResult {
