@@ -59,7 +59,7 @@ function App() {
   return (
     <div className="min-h-screen bg-gradient-to-br from-indigo-500 via-purple-500 to-pink-500 py-12 px-4 sm:px-6 lg:px-8">
       <div className="max-w-3xl mx-auto">
-        <div className="bg-white/90 backdrop-blur-sm rounded-2xl shadow-xl p-8">
+        <div className="bg-white/90 dark:bg-gray-800/90 backdrop-blur-sm rounded-2xl shadow-xl p-8 transition-colors">
           <h1 className="text-3xl font-bold text-transparent bg-clip-text bg-gradient-to-r from-indigo-600 to-pink-600 text-center mb-8">
             Currency Converter
           </h1>
@@ -74,10 +74,10 @@ function App() {
               />
               <button
                 onClick={handleSwapCurrencies}
-                className="p-3 rounded-full bg-gray-100 hover:bg-gray-200 transition-colors"
+                className="p-3 rounded-full bg-white/90 dark:bg-gray-700/90 hover:bg-gray-50 dark:hover:bg-gray-600/90 shadow-lg hover:shadow-xl transition-all transform hover:scale-105"
                 aria-label="Swap currencies"
               >
-                <ArrowRightLeft className="w-5 h-5 text-gray-500" />
+                <ArrowRightLeft className="w-5 h-5 text-indigo-600 dark:text-gray-200" />
               </button>
               <CurrencyInput
                 value={toCurrency}
@@ -111,15 +111,15 @@ function App() {
             </button>
 
             {result && (
-              <div className="mt-8 p-6 bg-gradient-to-r from-indigo-50 to-pink-50 rounded-xl">
+              <div className="mt-8 p-6 bg-gradient-to-r from-indigo-50 to-pink-50 dark:from-gray-700/50 dark:to-gray-700/50 rounded-xl">
                 <div className="text-center">
-                  <div className="text-2xl font-bold text-gray-900">
+                  <div className="text-2xl font-bold text-gray-900 dark:text-gray-100">
                     {result.fromCurrency.symbol}{result.fromAmount.toLocaleString()} = {result.toCurrency.symbol}{result.toAmount.toLocaleString()}
                   </div>
-                  <div className="text-sm text-gray-500 mt-2">
+                  <div className="text-sm text-gray-500 dark:text-gray-400 mt-2">
                     1 {result.fromCurrency.code} = {result.rate} {result.toCurrency.code}
                   </div>
-                  <div className="text-xs text-gray-400 mt-1">
+                  <div className="text-xs text-gray-400 dark:text-gray-500 mt-1">
                     Last updated: {result.lastUpdated}
                   </div>
                 </div>
